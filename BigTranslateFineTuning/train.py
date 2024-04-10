@@ -32,7 +32,7 @@ def parse_cfg():
     args = parser.parse_args()
     
     with open(args.config, "r") as f:
-        cfg = yaml.load(f)
+        cfg = yaml.safe_load(f)
         
     return cfg
 
@@ -51,9 +51,6 @@ if __name__ == "__main__":
     seed_everything()
     timestamp = datetime.today().strftime("%d-%m-%Y-%H-%M")
     cfg = parse_cfg()
-    
-    # cfg["save_dir"] = f'./checkpoints/'
-    # os.makedirs(cfg["save_dir"], exist_ok=True)
     
     pprint(cfg)
     
