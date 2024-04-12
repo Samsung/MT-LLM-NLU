@@ -23,6 +23,8 @@ bash deepspeed_bigtranslate_train.sh
 `
 
 #### Translate multiATIS++ dataset
+To get the dataset go to https://github.com/amazon-research/multiatis and then put the ``train_EN.tsv`` file into ``BigTranslateFineTuning/multiATIS`` folder.
+
 Model will be automatically downloaded from huggingface hub. You can also specify path to the model in `translate_mulitatis.sh` script (--model-name argument)
 
 `
