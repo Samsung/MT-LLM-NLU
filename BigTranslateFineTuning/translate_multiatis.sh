@@ -8,5 +8,6 @@ do
         --target-lang "${LANG,,}" \
         --num-variants 5 \
         --chunk-size 100 \
+        --tensor-parallel-size 4 \
 
 done
