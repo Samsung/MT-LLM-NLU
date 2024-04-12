@@ -55,9 +55,10 @@ bash multiatis_data_postprocess.sh $OUTPUT_TRAINING_DATA_DIR
 #### Run training and evaluation
 ```bash
 cd JointBERT
-mkdir eval_results fails
+mkdir eval_results fails data
+cp -r $OUTPUT_TRAINING_DATA_DIR data
 python3 main.py \
-    --task $OUTPUT_TRAINING_DATA_DIR \
+    --task $(basename $OUTPUT_TRAINING_DATA_DIR) \
     --model_type ${MODEL_TYPE} \
     --patience 5 \
     --train_batch_size 500 \
