@@ -605,7 +605,7 @@ def convert_examples_to_features(examples, max_seq_len, tokenizer,
 
 def load_and_cache_examples(args, tokenizer, mode, teacher=False, pretrain=False, ratio=1.0):
     task = args.task if not pretrain else args.pretrain_task
-    processor = processors[task](args)
+    processor = processors.get(task, JoinProcessor)(args)
 
     # Load data features from cache or dataset file
     if hasattr(args, 'model_name_or_path'):
