@@ -23,6 +23,7 @@ def parse_args():
     parser.add_argument("--target-lang", required=True)
     parser.add_argument("--chunk-size", required=True, type=int)
     parser.add_argument("--num-variants", required=True, type=int)
+    parser.add_argument("--tensor-parallel-size", required=True, type=int)
     args = parser.parse_args()
     
     return args
@@ -92,7 +93,7 @@ if __name__ == "__main__":
     os.makedirs(args.output_path, exist_ok=True)
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
-    model = LLM(args.model_name, tensor_parallel_size=4)
+    model = LLM(args.model_name, tensor_parallel_size=args.tensor_parallel_size)
     sampling_params = SamplingParams(temperature=0.4, top_p=0.95, max_tokens=100, stop=["\n"])
     
     input_lines = sys.stdin.read().splitlines()[1:]
